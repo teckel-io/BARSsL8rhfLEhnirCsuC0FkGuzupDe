@@ -12,6 +12,10 @@
   under a page that names it). If the core does not load — an error, or no ready signal within 10 seconds — this page
   says so in plain words (a core that arrives late still draws the page, and takes the line away).
 
+  Because the core is shared across every generation of this page, the core's hash can no longer tell one page
+  generation from the next — so the page states its own, in the core tag's data-teckel-page: sha256 of the finished
+  page with that one attribute blanked, first 12 hex. Anyone can recompute it from the page alone.
+
   ⛔ THE ELEVENLABS PAIR (elevenlabs.html, elevenlabs_guide.html) NEVER LOADS THIS CORE and stays fully self-contained:
   it is the incumbent, and each practice's fallback and migration path, so a core failure must never take it out with
   this page.
@@ -45,6 +49,6 @@ window.teckelShell = (function () {
            ready: function () { done = true; clearTimeout(t); var b = box(); if (b) b.hidden = true; } };
 })();
 </script>
-<script data-teckel-core="aec474a0be7b" src="https://benedict.teckel.io/practice_portal_core/stable/portal.aec474a0be7b.js" onerror="window.teckelShell.fail('the file did not load')"></script>
+<script data-teckel-core="aec474a0be7b" src="https://benedict.teckel.io/practice_portal_core/stable/portal.aec474a0be7b.js" data-teckel-page="692d15a8098b" onerror="window.teckelShell.fail('the file did not load')"></script>
 </body>
 </html>
